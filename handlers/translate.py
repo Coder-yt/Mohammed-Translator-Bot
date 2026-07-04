@@ -101,3 +101,84 @@ async def translate_handler(
 # Don't Remove Credit 
 # Owner @Mr_Mohammed_29
 # ------------------------- #
+
+
+    response = f"""
+🌍 Translation Complete
+
+📝 Original
+{text}
+
+🔤 Detected Language
+{source_lang.upper()}
+
+🎯 Target Language
+{target_lang.upper()}
+
+✅ Translation
+{translated_text}
+"""
+
+    await message.reply_text(
+        response,
+        quote=True
+    )
+
+# ------------------------- #
+# Don't Remove Credit 
+# Owner @Mr_Mohammed_29
+# ------------------------- #
+
+@Client.on_message(filters.command("history"))
+async def history_command(client: Client, message: Message):
+
+    history = db.get_history(message.from_user.id)
+
+    if not history:
+        await message.reply_text(
+            "📭 No translation history found."
+        )
+        return
+
+    text = "🕘 Your Recent Translations\n\n"
+
+    for i, item in enumerate(history, start=1):
+
+        source_text = item[0]
+        translated_text = item[1]
+        source_lang = item[2]
+        target_lang = item[3]
+
+        if len(source_text) > 30:
+            source_text = source_text[:30] + "..."
+
+        if len(translated_text) > 30:
+            translated_text = translated_text[:30] + "..."
+
+        text += (
+            f"{i}. "
+            f"{source_lang.upper()} ➜ {target_lang.upper()}\n"
+            f"📝 {source_text}\n"
+            f"✅ {translated_text}\n\n"
+        )
+
+    await message.reply_text(text)
+
+# ------------------------- #
+# Don't Remove Credit 
+# Owner @Mr_Mohammed_29
+# ------------------------- #
+
+@Client.on_message(filters.command("clearhistory"))
+async def clear_history(client: Client, message: Message):
+
+    db.clear_history(message.from_user.id)
+
+    await message.reply_text(
+        "🗑️ Your translation history has been cleared."
+    )
+
+# ------------------------- #
+# Don't Remove Credit 
+# Owner @Mr_Mohammed_29
+# ------------------------- #
