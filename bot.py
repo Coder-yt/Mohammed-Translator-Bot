@@ -5,6 +5,7 @@
 
 from pyrogram import Client
 from config import API_ID, API_HASH, BOT_TOKEN
+from keep_alive import keep_alive
 
 # ------------------------- #
 # Don't Remove Credit 
@@ -33,6 +34,7 @@ app = Client(
 
 if __name__ == "__main__":
     print("=" * 50)
+    keep_alive()
     print("🌍 Translation Bot Started Successfully")
     print("=" * 50)
 
