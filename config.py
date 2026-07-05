@@ -38,14 +38,14 @@ DATABASE_NAME = "translation.db"
 
 # Bot
 
-BOT_NAME = "Translation Bot"
+BOT_NAME = "DemoRename_bot"
 
 # ------------------------- #
 # Don't Remove Credit 
 # Owner @Mr_Mohammed_29
 # ------------------------- #
 
-OWNER = "Your Name"
+OWNER = "Mr_Mohammed_29"
 
 # ------------------------- #
 # Don't Remove Credit 
