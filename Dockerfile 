@@ -25,7 +25,6 @@ RUN pip install --no-cache-dir --upgrade pip && \
 COPY . .
 
 CMD ["python", "bot.py"]
-
 # ------------------------- #
 # Don't Remove Credit 
 # Owner @Mr_Mohammed_29
